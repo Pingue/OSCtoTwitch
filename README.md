@@ -24,6 +24,39 @@ works well). Supply it via `--access-token` or the environment:
 | `TWITCH_CLIENT_ID` | no* | App client id (*needed for refresh) |
 | `TWITCH_CLIENT_SECRET` | no* | App client secret (*needed for refresh) |
 
+### Getting a token
+
+1. Log in to Twitch **as the account that should post** (e.g. a bot account).
+2. Register an app at <https://dev.twitch.tv/console/apps> → *Register Your Application*:
+   - OAuth Redirect URL: `http://localhost:3000`
+   - Category: *Chat Bot* (or similar); Client Type: **Confidential**
+   - Note the **Client ID**, and generate a **Client Secret**.
+3. Generate a user token with the [Twitch CLI](https://dev.twitch.tv/docs/cli/):
+
+   ```bash
+   twitch configure                      # paste the Client ID and Secret
+   twitch token -u -s 'user:write:chat'  # opens a browser; approve as the posting account
+   ```
+
+   It prints an **access token** and a **refresh token**.
+4. Export them (the client id/secret and refresh token let the bridge renew
+   the access token itself, which otherwise expires after a few hours):
+
+   ```bash
+   export TWITCH_ACCESS_TOKEN=...
+   export TWITCH_REFRESH_TOKEN=...
+   export TWITCH_CLIENT_ID=...
+   export TWITCH_CLIENT_SECRET=...
+   ```
+
+Without the Twitch CLI, you can open
+`https://id.twitch.tv/oauth2/authorize?response_type=code&client_id=<CLIENT_ID>&redirect_uri=http://localhost:3000&scope=user:write:chat`
+in a browser, approve, then exchange the `code` from the redirect URL with a
+POST to `https://id.twitch.tv/oauth2/token` (`client_id`, `client_secret`,
+`code`, `grant_type=authorization_code`, `redirect_uri`).
+
+Keep these values secret; anyone with them can chat as that account.
+
 ## Run
 
 ```bash
