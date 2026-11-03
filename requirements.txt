@@ -3,3 +3,4 @@ click
 structlog
 requests
 PyYAML
+python-dotenv

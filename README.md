@@ -55,6 +55,10 @@ in a browser, approve, then exchange the `code` from the redirect URL with a
 POST to `https://id.twitch.tv/oauth2/token` (`client_id`, `client_secret`,
 `code`, `grant_type=authorization_code`, `redirect_uri`).
 
+Alternatively, put them in a `.env` file next to the script (see
+`.env.example`; `.env` is gitignored). It's optional, and real environment
+variables and command-line options take precedence over it.
+
 Keep these values secret; anyone with them can chat as that account.
 
 ## Run

@@ -1,11 +1,15 @@
 import click
 import structlog
 import yaml
+from dotenv import load_dotenv
 from pythonosc.dispatcher import Dispatcher
 from pythonosc.osc_server import BlockingOSCUDPServer
 
 from mapper import Mapper
 from twitch import TwitchChat, TwitchError
+
+# Optionally read credentials from a .env file. Real environment variables win.
+load_dotenv()
 
 
 @click.command()
