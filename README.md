@@ -31,7 +31,22 @@ works well). Supply it via `--access-token` or the environment:
    - OAuth Redirect URL: `http://localhost:3000`
    - Category: *Chat Bot* (or similar); Client Type: **Confidential**
    - Note the **Client ID**, and generate a **Client Secret**.
-3. Generate a user token with the [Twitch CLI](https://dev.twitch.tv/docs/cli/):
+3. Install the [Twitch CLI](https://dev.twitch.tv/docs/cli/):
+
+   ```bash
+   # macOS / Linux (Homebrew)
+   brew install twitchdev/twitch/twitch-cli
+   ```
+
+   ```powershell
+   # Windows (Scoop)
+   scoop bucket add twitch https://github.com/twitchdev/scoop-bucket.git
+   scoop install twitch-cli
+   ```
+
+   Otherwise download a binary from the
+   [releases page](https://github.com/twitchdev/twitch-cli/releases) and put it on your `PATH`.
+   Then generate a user token:
 
    ```bash
    twitch configure                      # paste the Client ID and Secret
