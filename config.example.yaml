@@ -1,0 +1,11 @@
+# OSCtoTwitch configuration. Copy to config.yaml and edit.
+
+# The Twitch channel (login name) whose chat messages are sent to.
+channel: your_channel_name
+
+# Optional: named OSC addresses -> chat message templates.
+# Positional OSC arguments are substituted with {0}, {1}, ...
+messages:
+  /twitch/starting: "Stream is starting, hang tight!"
+  /twitch/brb: "BRB - back in {0} minutes"
+  /twitch/scene: "Now showing: {0}"
