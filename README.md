@@ -90,6 +90,19 @@ TWITCH_ACCESS_TOKEN=xxxx python osctotwitch.py --port 1338 --config config.yaml
 
 Messages are capped at 500 characters (Twitch's limit).
 
+### Testing locally
+
+Send OSC messages with `oscsend` (liblo-tools) or `python-osc`:
+
+```bash
+oscsend 127.0.0.1 1338 /twitch/say s "hello from OSC"
+oscsend 127.0.0.1 1338 /twitch/starting i 1
+```
+
+Use `127.0.0.1`, not `localhost` — the server binds to IPv4 only, and
+`localhost` may resolve to the IPv6 `::1` on some systems, silently dropping
+the packet.
+
 ## Tests
 
 ```bash
